@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+tortoise-orm
+asyncpg
+passlib[bcrypt]
+python-jose
+pydantic-settings
+redis
+aioredis
+loguru
+python-dotenv

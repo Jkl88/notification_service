@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    container_name: fastapi_app
+    restart: always
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: notifications
+      POSTGRES_USER: notif_user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:alpine
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:

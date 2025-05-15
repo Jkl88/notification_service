@@ -1,0 +1,9 @@
+.env
+*.env
+venv/
+logs/
+.idea/
+.vscode/
+__pycache__
+.pytest_cache
+.git
