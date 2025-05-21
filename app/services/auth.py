@@ -29,7 +29,7 @@ async def login_user(data: LoginRequest):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
     
     access_token = create_access_token({"sub": str(user.id)}, settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-    refresh_token = create_access_token({"sub": str(user.id)}, settings.REFRESH_TOKEN_EXPIRE_MINUTES)
+    refresh_token = create_refresh_token({"sub": str(user.id)}, settings.REFRESH_TOKEN_EXPIRE_MINUTES)
     return {
         "access_token": access_token,
         "refresh_token": refresh_token,
